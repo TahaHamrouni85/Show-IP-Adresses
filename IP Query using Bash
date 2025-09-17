@@ -1,0 +1,14 @@
+#IPV4 QUERY
+
+ipv4i=$(hostname -I | awk '{print $1}')
+ipv6i=$(ip -6 -brief -oneline address show dev eth0 | awk '/UP/ {print $3})
+ipv4e=$(curl -s https://api.ipify.org)
+ipv6e=$(curl -s https://api64.ipify.org)
+
+
+#IPV4 OUTPUT
+
+echo "Your Privat IPV4 Adress is = $ipv4i"
+echo "Your Privat IPV6 Adress is = $ipv6i"
+echo "Your Public IPV4 Adress is = $ipv4e"
+echo "Your Public IPV6 Adress is = ${ipv6e:-n/a}"
